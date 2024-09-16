@@ -25,6 +25,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <script
+					dangerouslySetInnerHTML={{
+						__html: `
+            console.log("[Assigning env variables.]");
+			      Object.assign(window, ${JSON.stringify({
+              _ENV_VARS: {
+                "STAGE": "production",
+                "HOME_URL": "https://google.com"
+              }
+            })});
+            `,
+					}}
+				></script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
